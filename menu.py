@@ -13,7 +13,7 @@ class colors:
 #Title & main menu & about
 class main_menu:
     os.system("mode con cols=140 lines=30")
-    os.system("title Minecraft Simpler v2.0")
+    os.system("title Minecraft Simpler")
 
     about = """
     My Discord: StaiN#9677
