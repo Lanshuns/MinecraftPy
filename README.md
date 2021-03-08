@@ -1,4 +1,4 @@
-# Minecraft_Simpler
+# Minecraft_Py
 
 pip installs:
 requests, multiprocessing, socks, easygui
@@ -9,7 +9,7 @@ functions-classes:
 - timeout
 - proxy_type
 - logs
-- requests_proxy:
+- requests_proxy
 - load_proxy
 - load_wordlist
 - vail_wordlists
