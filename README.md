@@ -1,4 +1,4 @@
-# Minecraft_Py
+# minecraft_py
 
 pip installs:
 requests, multiprocessing, socks, easygui
