@@ -190,7 +190,7 @@ if __name__ == "__main__":
     #Title bar
     def updateTitle():
         meow = int(cpm_counter.cpm())
-        ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Simpler | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free}")
+        ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v2.0 | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free}")
         pass
 
 
