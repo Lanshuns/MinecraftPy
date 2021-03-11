@@ -13,7 +13,7 @@ def load_wordlist():
         #Remove dupes
         wordlists = list(dict.fromkeys(wordlists))
         wordlist_count = len(wordlists)
-        print(f"  \n  Loaded Wordlists: {wordlist_count}")
+        print(f"  Loaded Wordlists: {wordlist_count}")
         return wordlists
 
 
