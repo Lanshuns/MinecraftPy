@@ -20,7 +20,7 @@ cd minecraft_py
 
 pip install -r requirements.txt
 ```
- ##getting help
+##getting help
 So you need help.
 
 People can help you, but first help them help you, and don't waste their time.
