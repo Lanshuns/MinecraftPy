@@ -1,6 +1,6 @@
 # minecraft_py
 
-* requirements:*
+** requirements:
 - pip install requests
 - pip install multiprocessing
 - pip install socks
