@@ -1,16 +1,9 @@
 # minecraft_py
 
-pip installs:
-requests, multiprocessing, socks, easygui
+requirements:
+pip install requests
+pip install multiprocessing
+pip install socks
+pip install easygui
 
-functions-classes:
-- cpm
-- threads
-- timeout
-- proxy_type
-- logs
-- requests_proxy
-- load_proxy
-- load_wordlist
-- vail_wordlists
-- results
+![image](https://user-images.githubusercontent.com/62406629/111067026-c0edc400-84ca-11eb-9613-c8223f76464b.png)
