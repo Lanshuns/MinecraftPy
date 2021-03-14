@@ -1,0 +1,4 @@
+requests
+multiprocessing
+socks
+easygui
