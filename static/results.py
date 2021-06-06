@@ -33,7 +33,6 @@ class results:
         file_path = path.join(results_path,file_name)
         with open(file_path,"a",errors="ingore") as f:
             f.write(self + "\n")
-
     def Unsecured(self):
         results_path = f"./Results/{times.timestamp}"
         file_name = "Unsecured.txt"
