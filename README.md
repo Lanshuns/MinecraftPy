@@ -1,6 +1,7 @@
 # minecraft_py
 
 requirements:
+- proxies.txt and wordlist files in the same checker .exe dir
 - python3x
 - open cmd in the same direction and type
 ``pip install -r requirements.txt``
