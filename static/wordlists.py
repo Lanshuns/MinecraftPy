@@ -2,7 +2,6 @@ from multiprocessing import JoinableQueue as Queue
 
 
 #Load text and replace errors with "spaces", wthout using error kwarg it will cause an exception
-#Load Wordlist
 def load_wordlist():
     with open("wordlist.txt","r",encoding="utf8",errors="replace") as wordlist_file:
         wordlist_text = wordlist_file.read()
@@ -16,9 +15,9 @@ def load_wordlist():
 
 
 #Loop the wordlists
-def vail_wordlists(wordlista):
+def vail_wordlists(wordlists):
     q = Queue(maxsize=0)
-    for wordlist in wordlista:
+    for wordlist in wordlists:
         valid_wordlist = False 
         try:
             #Only split the first instance of ":"
