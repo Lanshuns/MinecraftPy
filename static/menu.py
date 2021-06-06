@@ -15,7 +15,6 @@ class colors:
 
 #Title & main menu & about
 class main_menu:
-    # os.system("mode con cols=153 lines=31")
     os.system("title Minecraft Py v3.0")
 
     about = """
