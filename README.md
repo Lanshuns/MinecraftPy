@@ -5,4 +5,4 @@ requirements:
 - open cmd in the same direction and type
 ``pip install -r requirements.txt``
 
-![image](https://user-images.githubusercontent.com/62406629/111067026-c0edc400-84ca-11eb-9613-c8223f76464b.png)
+![Capture](https://user-images.githubusercontent.com/62406629/120914851-eee53d80-c6a0-11eb-9100-4c157db53207.PNG)
