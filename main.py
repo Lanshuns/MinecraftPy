@@ -12,10 +12,10 @@ import easygui
 import socks
 
 #File imports
-from menu import threads, timeout, proxy_type, logs, main_menu, colors
-from proxies import requests_proxy, load_proxy
-from wordlists import load_wordlist, vail_wordlists
-from results import results, times
+from static.menu import threads, timeout, proxy_type, logs, main_menu, colors
+from static.proxies import requests_proxy, load_proxy
+from static.wordlists import load_wordlist, vail_wordlists
+from static.results import results, times
 
 
 #Status
@@ -119,7 +119,6 @@ def login(q,proxies,log,proxy_type):
 
                 try:
                     rsp2 = sess.get(url2, headers=headers2)
-                #Errors status
                 except requests.ConnectionError:
                     status.errors += 1
                     return False
@@ -198,13 +197,13 @@ if __name__ == "__main__":
 
     #Final results
     print(colors.normal,f"""
-    Checking Done.
+ Checking Done.
 
-    Hits: {status.Hits}
-    Secured: {status.Secured}
-    Unsecured: {status.Unsecured}
-    Free: {status.Free}
-    """)
+ Hits: {status.Hits}
+ Secured: {status.Secured}
+ Unsecured: {status.Unsecured}
+ Free: {status.Free}
+""")
 
 
 os.system("Pause")
