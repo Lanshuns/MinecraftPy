@@ -1,12 +1,10 @@
-import easygui
 from multiprocessing import JoinableQueue as Queue
 
 
 #Load text and replace errors with "spaces", wthout using error kwarg it will cause an exception
 #Load Wordlist
 def load_wordlist():
-    loadwordlist = easygui.fileopenbox(msg="Load Your wordlist", title="Wordlist", default='*', filetypes=["*.txt"], multiple=False)
-    with open(loadwordlist,"r",encoding="utf8",errors="replace") as wordlist_file:
+    with open("wordlist.txt","r",encoding="utf8",errors="replace") as wordlist_file:
         wordlist_text = wordlist_file.read()
         wordlists = wordlist_text.splitlines()
         
