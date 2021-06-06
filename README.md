@@ -1,6 +1,8 @@
 # minecraft_py
+Download:
+[Laltest Release](https://github.com/Stainpy/minecraft_py/releases/download/minecraft_py-v3.0/Minecraft.Py.v3.0.exe)
 
-requirements:
+Requirements:
 - proxies.txt and wordlist.txt files in the same checker .exe direction
 - python3x
 - open cmd in the same direction and type
