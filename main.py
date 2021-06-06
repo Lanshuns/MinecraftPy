@@ -8,7 +8,6 @@ from threading import Thread
 import random
 import ctypes
 import time
-import easygui
 import socks
 
 #File imports
@@ -102,9 +101,9 @@ def login(q,proxies,log,proxy_type):
 
                 elif 'selectedProfile' not in rsp.text:
                     print(colors.yellow + f" [Free]: {username}:{password}")
-                    results.Free_Demo(f"{username}:{password} | Free ")
-                    status.Free_Demo += 1
-                    if status.Free_Demo == 1 and times.timestamp == None:
+                    results.Free(f"{username}:{password} | Free ")
+                    status.Free += 1
+                    if status.Free == 1 and times.timestamp == None:
                         times.timestamp                    
                     updateTitle()                    
                     return True
