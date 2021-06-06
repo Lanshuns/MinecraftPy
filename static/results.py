@@ -7,6 +7,7 @@ from os import path
 class times:
     timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
 
+
 #Write to text
 class results:
     def Hits(self):
