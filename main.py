@@ -196,13 +196,13 @@ if __name__ == "__main__":
 
     #Final results
     print(colors.normal,f"""
- Checking Done.
+  Checking Done.
 
- Hits: {status.Hits}
- Secured: {status.Secured}
- Unsecured: {status.Unsecured}
- Free: {status.Free}
+  Hits: {status.Hits}
+  Secured: {status.Secured}
+  Unsecured: {status.Unsecured}
+  Free: {status.Free}
 """)
 
 
-os.system("Pause")
+input("")
