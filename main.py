@@ -4,10 +4,12 @@ from requests import Timeout
 from multiprocessing import JoinableQueue as Queue
 import threading
 import os
+import easygui
 from threading import Thread
 import random
 import ctypes
 import time
+from time import sleep
 import socks
 
 #File imports
@@ -44,10 +46,28 @@ global cpm_counter
 cpm_counter = cpm(int(time.time()))
 
 
+def check_version():
+    try:
+        getversion = requests.get("https://raw.githubusercontent.com/Stainpy/Minecraft_Py/main/version.txt")
+        if f'{version}\n' != getversion.text:
+            v = f"""
+            Your version is outdated.
+
+            Your currently version: {version} Latest version is: {getversion.text}
+            Get latest version in the link below
+
+            https://github.com/Stainpy/Minecraft_Py/releases
+            """
+            easygui.msgbox(msg=v, title='Updates available', ok_button=f'Close', image=None, root=None)
+            sleep(1)
+    except:
+        print("Error while checking for updates!")
+
+
 #Title bar
 def updateTitle():
     meow = int(cpm_counter.cpm())
-    ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v3.0 | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free}")
+    ctypes.windll.kernel32.SetConsoleTitleW(f"Minecraft Py v{version} | Status: {status.wordlist}/{status.loaded_wordlist} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free}")
     pass
 
 
@@ -173,7 +193,10 @@ def login(q,proxies,log,proxy_type):
 
 
 if __name__ == "__main__":
+    version = '3.0'
+    check_version()
     main_menu()
+
     threads_input = threads()
     timeout = timeout()
     proxy_type = proxy_type()
@@ -203,6 +226,5 @@ if __name__ == "__main__":
   Unsecured: {status.Unsecured}
   Free: {status.Free}
 """)
-
 
 input("")
