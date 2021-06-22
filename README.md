@@ -1,5 +1,5 @@
 # Important:
-This tool should only be used for educational purposes only. This tool is used to demonstrate penetration testing on how certain cyber-criminals can bruteforce certain websites such as NordVPN to check the validity of accounts. Please do not use this for illegal activity and only use it as a reference.
+This tool should only be used for educational purposes only. This tool is used to demonstrate penetration testing on how certain cyber-criminals can bruteforce certain websites such as Minecraft to check the validity of accounts. Please do not use this for illegal activity and only use it as a reference.
 
 
 
