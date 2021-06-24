@@ -2,7 +2,6 @@ import os
 import easygui
 
 
-#Logs colors
 class colors:
     green = "\u001b[32;1m" + "\033[1m"
     yellow = "\u001b[33;1m" + "\033[1m"
@@ -13,9 +12,7 @@ class colors:
     blue = "\u001B[34m" + "\033[1m"
 
 
-#Title & main menu & about
 class main_menu:
-    # os.system("mode con cols=153 lines=31")
     os.system("title Minecraft Py Checker")
 
     about = """
@@ -41,18 +38,21 @@ class main_menu:
     easygui.msgbox(msg=about, title='About', ok_button='Close', image=None, root=None)
 
 
-def threads():
+def proxy_type():
     while 1:
-        num_threads = (input(colors.normal + "  Threads: ")) 
-        if num_threads.isdigit():
-            num_threads = int(num_threads)
-            if num_threads == 0:
-                easygui.msgbox(msg="Wrong Threads Number!! Please choose from 1 to 200.", title='Error', ok_button='OK', image=None, root=None)
-                num_threads = 1
-            elif num_threads <= 200:
-                return num_threads
+        proxytype_input = (input(colors.normal + "  Proxies Type:\n  [1]: Http/s\n  [2]: Socks4\n  [3]: Socks5\n  > ")) 
+        if proxytype_input.isdigit():
+            proxytype_input = int(proxytype_input)
+            if proxytype_input == 1:
+                proxytype = 'http'
+            elif proxytype_input == 2:
+                proxytype = 'socks4'
+            elif proxytype_input == 3:
+                proxytype = 'socks5'
             else:
-                easygui.msgbox(msg="Wrong Threads Number!! Max threads is 200.", title='Error', ok_button='OK', image=None, root=None)
+                easygui.msgbox(msg="Error!! Please choose one of available modes.", title='Error', ok_button='OK', image=None, root=None)
+            if proxytype_input <= 3:
+                return proxytype
         else:
             easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
 
@@ -66,21 +66,18 @@ def timeout():
         else:
             easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
 
-def proxy_type():
+def threads():
     while 1:
-        proxytype_input = (input("  Proxies Type:\n  [1]: Http/s\n  [2]: Socks4\n  [3]: Socks5\n  > ")) 
-        if proxytype_input.isdigit():
-            proxytype_input = int(proxytype_input)
-            if proxytype_input == 1:
-                proxytype = 'http'
-            elif proxytype_input == 2:
-                proxytype = 'socks4'
-            elif proxytype_input == 3:
-                proxytype = 'socks5'
+        num_threads = (input("  Threads: ")) 
+        if num_threads.isdigit():
+            num_threads = int(num_threads)
+            if num_threads == 0:
+                easygui.msgbox(msg="Wrong Threads Number!! Please choose from 1 to 200.", title='Error', ok_button='OK', image=None, root=None)
+                num_threads = 1
+            elif num_threads <= 200:
+                return num_threads
             else:
-                easygui.msgbox(msg="Error!! Please choose one of available modes.", title='Error', ok_button='OK', image=None, root=None)
-            if proxytype_input <= 3:
-                return proxytype
+                easygui.msgbox(msg="Wrong Threads Number!! Max threads is 200.", title='Error', ok_button='OK', image=None, root=None)
         else:
             easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
 
