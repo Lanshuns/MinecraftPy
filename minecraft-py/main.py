@@ -71,7 +71,7 @@ def check_version():
             easygui.msgbox(msg=v, title='Updates available', ok_button=f'Close', image=None, root=None)
             sleep(1)
     except:
-        print("Error while checking for updates!")
+        print("  Error while checking for updates!\n")
 
 
 def updateTitle():
@@ -199,9 +199,14 @@ def login(q,proxies,log,proxy_type):
             q.task_done()
 
 
+
 if __name__ == "__main__":
     version = '3.2'
     check_version()
+
+    open("proxies.txt", "a").close()
+    open("wordlists.txt", "a").close()
+
     main_menu()
     
     proxy_type = proxy_type()
@@ -224,6 +229,7 @@ if __name__ == "__main__":
         worker.start()
 
     q.join()
+
 
 
 os.system('pause>nul')
