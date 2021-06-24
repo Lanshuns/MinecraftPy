@@ -8,7 +8,7 @@ Download:
 
 
 Requirements:
-- proxies.txt and wordlist.txt files in the same checker .exe direction
+- proxies.txt and wordlists.txt files in the same checker .exe direction
 - python3x
 - open cmd in the same direction and type
 ``pip install -r requirements.txt``
