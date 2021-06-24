@@ -200,7 +200,7 @@ def login(q,proxies,log,proxy_type):
 
 
 if __name__ == "__main__":
-    version = '3.1'
+    version = '3.2'
     check_version()
     main_menu()
     
