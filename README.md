@@ -13,6 +13,6 @@ This tool should only be used for educational purposes only. This tool is used t
 [Latest Release](https://github.com/Stainpy/Minecraft-Py/releases/download/Minecraft-Py-v3.5/Minecraft-Py-v3.5.exe)
 
 # About
-Discord: StaiN#9677
-Bitcoin: 3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn
-Awesome Python Developer: https://github.com/Categorically
+- Discord: StaiN#9677
+- Bitcoin: 3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn
+- Awesome Python Developer: https://github.com/Categorically
