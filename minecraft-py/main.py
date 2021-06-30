@@ -3,18 +3,20 @@ from requests import Timeout
 from multiprocessing import JoinableQueue as Queue
 import threading
 import os
-import easygui
 from threading import Thread
 import random
 import ctypes
 import time
 from time import sleep
 import socks
+import webbrowser
+import easygui
 
-from static.menu import threads, timeout, proxy_type, logs, main_menu, colors
+from static.menu import threads, timeout, proxy_type, logs, main_menu, colors, about
 from static.proxies import requests_proxy, load_proxy
 from static.wordlists import load_wordlist, vail_wordlists
 from static.results import results
+
 
 
 class status:
@@ -41,8 +43,8 @@ class cpm:
 global cpm_counter
 cpm_counter = cpm(int(time.time()))
 
-lock = threading.Lock()
 
+lock = threading.Lock()
 def print_logs(arg):
     lock = threading.Lock()
     lock.acquire()
@@ -50,28 +52,37 @@ def print_logs(arg):
     lock.release()
 
 
-def clearConsole():
-    command = 'clear'
-    if os.name in ('nt', 'dos'):
-        command = 'cls'
-    os.system(command)
-
 def check_version():
     try:
-        getversion = requests.get("https://raw.githubusercontent.com/Stainpy/Minecraft_Py/main/version.txt")
-        if f'{version}\n' != getversion.text:
-            v = f"""
-            Your version is outdated.
-
-            Your currently version: {version} Latest version is: {getversion.text}
-            Get latest version in the link below
-
-            https://github.com/Stainpy/Minecraft_Py/releases
-            """
-            easygui.msgbox(msg=v, title='Updates available', ok_button=f'Close', image=None, root=None)
-            sleep(1)
+        getversion = requests.get("https://raw.githubusercontent.com/Stainpy/Minecraft-Py/main/version.json")
+        data = getversion.json()
+        current_version = data['version']
+        url = data['link']
+        if version != current_version:
+            main_menu()
+            while 1:
+                inp = input(colors.yellow + f"  Updates available!\n  Your currently version is {version}, latest version is {current_version}\n  [1]: Download now\n  [2]: Skip\n  > ")
+                if inp.isdigit():
+                    inp = int(inp)
+                    if inp == 1:
+                        link = webbrowser.open(url)
+                        time.sleep(1)
+                        os.system('cls')
+                        return link
+                    elif inp == 2:
+                        time.sleep(1)
+                        os.system('cls')
+                        break
+                    else:
+                        print(colors.red + "  Error!! Please choose one of available modes.")
+                        pass
+                else:
+                    print(colors.red + "  Error!! Please enter a digit.")
     except:
-        print("  Error while checking for updates!\n")
+        main_menu()
+        print(colors.red + "  Error while checking for updates!")
+        os.system('pause>nul')
+        os.system('cls')
 
 
 def updateTitle():
@@ -201,27 +212,29 @@ def login(q,proxies,log,proxy_type):
 
 
 if __name__ == "__main__":
-    version = '3.2'
+    easygui.msgbox(msg=about, title='About', ok_button='Close', image=None, root=None)
+
+    version = 3.5
     check_version()
 
     open("proxies.txt", "a").close()
     open("wordlists.txt", "a").close()
 
     main_menu()
-    
+
     proxy_type = proxy_type()
     timeout = timeout()
     threads_input = threads()
     log = logs()
 
+    time.sleep(1)
     worldist_array = load_wordlist()
     status.loaded_wordlist = len(worldist_array)
     q = vail_wordlists(worldist_array)
-    proxies = load_proxy()
+    proxies = load_proxy(proxy_type)
+    time.sleep(2)
 
-    time.sleep(1)
-
-    clearConsole()
+    os.system('cls')
 
     for i in range(threads_input):
         worker = Thread(target=login, args=(q, proxies, log, proxy_type))
