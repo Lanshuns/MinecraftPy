@@ -14,5 +14,5 @@ This tool should only be used for educational purposes only. This tool is used t
 
 # About
 - Discord: StaiN#9677
-- Bitcoin: 3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn
+- Bitcoin: ``3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn``
 - Awesome Python Developer: https://github.com/Categorically
