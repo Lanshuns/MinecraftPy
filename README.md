@@ -1,4 +1,4 @@
-                           ![minecraft-icon-24](https://user-images.githubusercontent.com/62406629/124013682-e7386080-d9e2-11eb-838e-318a818c2db2.png)
+![minecraft-py](https://user-images.githubusercontent.com/62406629/124013682-e7386080-d9e2-11eb-838e-318a818c2db2.png)
 
 
 # Important:
