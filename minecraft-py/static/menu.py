@@ -1,5 +1,4 @@
 import os
-import easygui
 
 
 class colors:
@@ -12,10 +11,7 @@ class colors:
     blue = "\u001B[34m" + "\033[1m"
 
 
-class main_menu:
-    os.system("title Minecraft Py Checker")
-
-    about = """
+about = """
     Discord: StaiN#9677
 
     GitHub: https://github.com/Stainpy
@@ -25,7 +21,10 @@ class main_menu:
     Awesome Python Developer: https://github.com/Categorically
     """
 
-    print("""
+def main_menu():
+    os.system("title Minecraft Py Checker")
+
+    title = print("""
 
             \u001b[0m\033[1m███╗   ███╗██╗███╗   ██╗███████╗ ██████╗██████╗  █████╗ ███████╗████████╗    \u001B[34m██████╗ \u001b[33;1m██╗   ██╗
             \u001b[0m\033[1m████╗ ████║██║████╗  ██║██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝    \u001B[34m██╔══██╗\u001b[33;1m╚██╗ ██╔╝
@@ -35,60 +34,62 @@ class main_menu:
             \u001b[0m\033[1m╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝       \u001B[34m╚═╝        \u001b[33;1m╚═╝    
         """)
 
-    easygui.msgbox(msg=about, title='About', ok_button='Close', image=None, root=None)
-
 
 def proxy_type():
     while 1:
-        proxytype_input = (input(colors.normal + "  Proxies Type:\n  [1]: Http/s\n  [2]: Socks4\n  [3]: Socks5\n  > ")) 
+        proxytype_input = (input(colors.normal + "  Proxies Type:\n  [1]: Http/s\n  [2]: Socks4\n  [3]: Socks5\n  [4]: Proxyless\n  > ")) 
         if proxytype_input.isdigit():
             proxytype_input = int(proxytype_input)
             if proxytype_input == 1:
-                proxytype = 'http'
+                return 'http'
             elif proxytype_input == 2:
-                proxytype = 'socks4'
+                return 'socks4'
             elif proxytype_input == 3:
-                proxytype = 'socks5'
+                return 'socks5'
+            elif proxytype_input == 4:
+                return 'proxyless'
             else:
-                easygui.msgbox(msg="Error!! Please choose one of available modes.", title='Error', ok_button='OK', image=None, root=None)
-            if proxytype_input <= 3:
-                return proxytype
+                print(colors.red + "  Error!! Please choose one of available modes.")
         else:
-            easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
+            print(colors.red + "  Error!! Please enter a digit.")
 
 def timeout():
     while 1:
-        num_timeout = (input("  Timeout(Secs): ")) 
+        num_timeout = (input(colors.normal + "  Timeout(Secs): ")) 
         if num_timeout.isdigit():
+            num_timeout = int(num_timeout)
+            if num_timeout == 0:
+                num_timeout = 1
             num_timeout = int(num_timeout)
             return num_timeout
 
         else:
-            easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
+            print(colors.red + "  Error!! Please enter a digit.")
 
 def threads():
     while 1:
-        num_threads = (input("  Threads: ")) 
+        num_threads = (input(colors.normal + "  Threads: ")) 
         if num_threads.isdigit():
             num_threads = int(num_threads)
             if num_threads == 0:
-                easygui.msgbox(msg="Wrong Threads Number!! Please choose from 1 to 200.", title='Error', ok_button='OK', image=None, root=None)
-                num_threads = 1
+                print(colors.red + "Wrong Threads Number!! Please choose from 1 to 200.")
             elif num_threads <= 200:
                 return num_threads
             else:
-                easygui.msgbox(msg="Wrong Threads Number!! Max threads is 200.", title='Error', ok_button='OK', image=None, root=None)
+                print(colors.red + "  Wrong Threads Number!! Max threads is 200.")
         else:
-            easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
+            print(colors.red + "  Error!! Please enter a digit.")
 
 def logs():
     while 1:
-        Show_Logs = (input("  Show Logs:\n  [1]: Yes\n  [2]: No\n  > ")) 
+        Show_Logs = (input(colors.normal + "  Show Logs:\n  [1]: Yes\n  [2]: No\n  > ")) 
         if Show_Logs.isdigit():
             Show_Logs = int(Show_Logs)
-            if Show_Logs <= 2:
+            if Show_Logs == 0:
+                print(colors.red + "Wrong Threads Number!! Please choose from 1 to 200.")
+            elif Show_Logs <= 2:
                 return Show_Logs
             else:
-                easygui.msgbox(msg="Error!! Please choose one of available modes.", title='Error', ok_button='OK', image=None, root=None)
+                print(colors.red + "  Error!! Please choose one of available modes.")
         else:
-            easygui.msgbox(msg="Error!! Please enter a digit.", title='Error', ok_button='OK', image=None, root=None)
+            print(colors.red + "  Error!! Please enter a digit.")
