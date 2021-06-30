@@ -4,7 +4,7 @@ This tool should only be used for educational purposes only. This tool is used t
 
 
 Download:
-[Latest Release](https://github.com/Stainpy/Minecraft-Py/releases/download/Minecraft-Py-v3.2/Minecraft-Py-v3.2.exe)
+[Latest Release](https://github.com/Stainpy/Minecraft-Py/releases/download/Minecraft-Py-v3.5/Minecraft-Py-v3.5.exe)
 
 
 Requirements:
