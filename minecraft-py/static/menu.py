@@ -11,16 +11,6 @@ class colors:
     blue = "\u001B[34m" + "\033[1m"
 
 
-about = """
-    Discord: StaiN#9677
-
-    GitHub: https://github.com/Stainpy
-
-    Bitcoin Address: 3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn
-
-    Awesome Python Developer: https://github.com/Categorically
-    """
-
 def main_menu():
     os.system("title Minecraft Py Checker")
 
@@ -37,7 +27,7 @@ def main_menu():
 
 def proxy_type():
     while 1:
-        proxytype_input = (input(colors.normal + "  Proxies Type:\n  [1]: Http/s\n  [2]: Socks4\n  [3]: Socks5\n  [4]: Proxyless\n  > ")) 
+        proxytype_input = (input(colors.normal + "  Proxies Type:\n  [1]: Http/s\n  [2]: Socks4\n  [3]: Socks5\n  > ")) 
         if proxytype_input.isdigit():
             proxytype_input = int(proxytype_input)
             if proxytype_input == 1:
@@ -46,8 +36,6 @@ def proxy_type():
                 return 'socks4'
             elif proxytype_input == 3:
                 return 'socks5'
-            elif proxytype_input == 4:
-                return 'proxyless'
             else:
                 print(colors.red + "  Error!! Please choose one of available modes.")
         else:
@@ -60,7 +48,6 @@ def timeout():
             num_timeout = int(num_timeout)
             if num_timeout == 0:
                 num_timeout = 1
-            num_timeout = int(num_timeout)
             return num_timeout
 
         else:
