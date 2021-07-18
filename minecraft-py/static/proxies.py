@@ -1,5 +1,7 @@
 from static.menu import colors
 import time
+import requests
+import os
 
 
 
@@ -18,8 +20,26 @@ def load_proxy(proxy_type):
                 time.sleep(3)
                 quit()
             else:
-                print(f"  Loaded Proxies: {proxiescount}")
+                print(colors.yellow +  f"  Loaded Proxies: {proxiescount}")
                 return proxies
+
+
+def scrape_proxies(proxy_type: str):
+    url = f"https://api.proxyscrape.com/v2/?request=getproxies&protocol={proxy_type}&country=all&anonymity=all"
+    headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36"}
+    try:
+        rsp = requests.get(url, headers=headers, timeout=5)
+    except Exception:
+        print(colors.red + "  Something went wrong while scrapping proxies, please retry again!")
+        time.sleep(3)
+        quit()
+
+    proxylist = rsp.text
+    proxylist = proxylist.splitlines()
+    filterr = list(dict.fromkeys(proxylist))
+    proxiescount = len(proxylist)
+    print(colors.yellow + f"  Scrapid Proxies: {proxiescount}")
+    return proxylist
 
 
 def requests_proxy(proxy,proxy_type):
