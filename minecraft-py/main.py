@@ -12,8 +12,9 @@ import socks
 import webbrowser
 import easygui
 
-from static.menu import threads, timeout, proxy_type, logs, main_menu, colors, about
-from static.proxies import requests_proxy, load_proxy
+
+from static.menu import threads, timeout, proxy_type, logs, main_menu, colors
+from static.proxies import requests_proxy, load_proxy, scrape_proxies
 from static.wordlists import load_wordlist, vail_wordlists
 from static.results import results
 
@@ -44,7 +45,6 @@ global cpm_counter
 cpm_counter = cpm(int(time.time()))
 
 
-lock = threading.Lock()
 def print_logs(arg):
     lock = threading.Lock()
     lock.acquire()
@@ -61,7 +61,7 @@ def check_version():
         if version != current_version:
             main_menu()
             while 1:
-                inp = input(colors.yellow + f"  Updates available!\n  Your currently version is {version}, latest version is {current_version}\n  [1]: Download now\n  [2]: Skip\n  > ")
+                inp = input(colors.yellow + f"  New version available!\n  Your current version is {version}, latest version is {current_version}\n  [1]: Download now\n  [2]: Skip\n  > ")
                 if inp.isdigit():
                     inp = int(inp)
                     if inp == 1:
@@ -80,7 +80,7 @@ def check_version():
                     print(colors.red + "  Error!! Please enter a digit.")
     except:
         main_menu()
-        print(colors.red + "  Error while checking for updates!")
+        print(colors.red + "  Something went wrong while checking for updates!")
         os.system('pause>nul')
         os.system('cls')
 
@@ -212,9 +212,17 @@ def login(q,proxies,log,proxy_type):
 
 
 if __name__ == "__main__":
+
+    about = """
+    Discord: StaiN#9677
+
+    GitHub: https://github.com/Stainpy
+
+    Bitcoin Address: 3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn
+    """
     easygui.msgbox(msg=about, title='About', ok_button='Close', image=None, root=None)
 
-    version = 3.5
+    version = 3.8
     check_version()
 
     open("proxies.txt", "a").close()
@@ -222,17 +230,33 @@ if __name__ == "__main__":
 
     main_menu()
 
-    proxy_type = proxy_type()
-    timeout = timeout()
+    while True:
+            mode = (input(colors.normal + "  [1]: Load Proxies\n  [2]: Proxy Scraper\n  [3]: Proxyless\n  > "))
+            if mode.isdigit():
+                mode = int(mode)
+                if mode == 1:
+                    proxy_type = proxy_type()
+                    proxies = load_proxy(proxy_type)
+                    break
+                elif mode == 2:
+                    proxy_type = proxy_type()
+                    proxies = scrape_proxies(proxy_type)
+                    break
+                elif mode == 3:
+                    proxy_type = 'proxyless'
+                    proxies = load_proxy(proxy_type)
+                    break
+            else:
+                print(colors.red + "  Error!! Please enter a digit.")
+
     threads_input = threads()
+    timeout = timeout()
     log = logs()
 
-    time.sleep(1)
     worldist_array = load_wordlist()
     status.loaded_wordlist = len(worldist_array)
     q = vail_wordlists(worldist_array)
-    proxies = load_proxy(proxy_type)
-    time.sleep(2)
+    time.sleep(1)
 
     os.system('cls')
 
