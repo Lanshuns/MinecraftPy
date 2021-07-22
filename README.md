@@ -12,8 +12,8 @@ This tool should only be used for educational purposes only, this tool is used t
 [Latest Release](https://github.com/Stainpy/Minecraft-Py/releases/download/Minecraft-Py-v3.8/Minecraft-Py-v3.8.exe)
 
 # About
-Telegram: [@stainpy](https://t.me/stainpy)
-Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
+- Telegram: [@stainpy](https://t.me/stainpy)
+- Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
 - Awesome Python Developer: https://github.com/Categorically
 
 # Donate
