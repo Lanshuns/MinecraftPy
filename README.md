@@ -14,5 +14,7 @@ This tool should only be used for educational purposes only, this tool is used t
 # About
 - Telegram: [@stainpy](https://t.me/stainpy)
 - Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
-- Bitcoin Address: ``3BJcvDSwqPQKRxKqMgaAL9YA1T7ZfGRt9P``
 - Awesome Python Developer: https://github.com/Categorically
+
+# Donate
+Bitcoin Address: ``3BJcvDSwqPQKRxKqMgaAL9YA1T7ZfGRt9P``
