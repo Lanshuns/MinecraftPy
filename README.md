@@ -13,7 +13,7 @@ This tool should only be used for educational purposes only, this tool is used t
 
 # About
 Telegram: [@stainpy](https://t.me/stainpy)
-- Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
+Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
 - Awesome Python Developer: https://github.com/Categorically
 
 # Donate
