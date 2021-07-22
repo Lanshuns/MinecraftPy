@@ -218,7 +218,7 @@ if __name__ == "__main__":
 
     GitHub: https://github.com/Stainpy
 
-    Bitcoin Address: 3JT4WFGqqrwvzN5hZzEXtC1pbjV9cMvZSn
+    Bitcoin Address: 3BJcvDSwqPQKRxKqMgaAL9YA1T7ZfGRt9P
     """
     easygui.msgbox(msg=about, title='About', ok_button='Close', image=None, root=None)
 
