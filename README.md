@@ -9,7 +9,7 @@ This tool should only be used for educational purposes only, this tool is used t
 ``pip install -r requirements.txt``
 
 # Download
-- [Latest Release](https://github.com/Stainpy/Minecraft-Py/releases/download/Minecraft-Py-v3.8/Minecraft-Py-v3.8.exe)
+[Latest Release](https://github.com/Stainpy/Minecraft-Py/releases/download/Minecraft-Py-v3.8/Minecraft-Py-v3.8.exe)
 
 # About
 - Telegram: [@stainpy](https://t.me/stainpy)
