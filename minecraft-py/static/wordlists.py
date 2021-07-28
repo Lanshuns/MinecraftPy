@@ -16,7 +16,7 @@ def load_wordlist():
             time.sleep(3)
             quit()
         else:
-            print(f"  Loaded Wordlists: {wordlist_count}")
+            print(colors.yellow + f"  Loaded Wordlists: {wordlist_count}")
             return wordlists
 
 
