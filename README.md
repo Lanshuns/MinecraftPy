@@ -12,4 +12,4 @@ This tool should only be used for educational purposes only, this tool is used t
 - Credits: Thanks to [Categorically](https://github.com/Categorically) for helping me in everything in this checker.
 
 # Donate
-Bitcoin Address: ``3BJcvDSwqPQKRxKqMgaAL9YA1T7ZfGRt9P``
+Bitcoin: ``3BJcvDSwqPQKRxKqMgaAL9YA1T7ZfGRt9P``
