@@ -12,11 +12,11 @@ def load_wordlist():
         wordlists = list(dict.fromkeys(wordlists))
         wordlist_count = len(wordlists)
         if wordlist_count == 0:
-            print(colors.red + "  Error!! No wordlists found.")
+            print(colors.red + " Error!! No wordlists was found.")
             time.sleep(3)
             quit()
-        else:
-            print(colors.yellow + f"  Loaded Wordlists: {wordlist_count}")
+        else :
+            print(colors.yellow + f" [+] Loaded Wordlists: {wordlist_count}")
             return wordlists
 
 
@@ -28,7 +28,8 @@ def vail_wordlists(wordlists):
             username,password = wordlist.split(":",1)
             valid_wordlist = True
         except:
-            pass
+            username = wordlist
+            valid_wordlist = True
         if valid_wordlist:
             q.put(wordlist.split(":",1))
     return q
