@@ -16,12 +16,12 @@ def load_proxy(proxy_type):
             proxies = list(dict.fromkeys(proxies))
             proxiescount = len(proxies)
             if proxiescount == 0:
-                print(colors.red + "  Error!! No proxies found.")
+                print(colors.red + " Error!! No proxies was found.")
                 time.sleep(3)
                 quit()
             else:
-                print(colors.yellow +  f"  Loaded Proxies: {proxiescount}")
-                return proxies
+                log = colors.yellow +  f" [+] Loaded Proxies: {proxiescount}"
+                return proxies,proxiescount,log
 
 
 def scrape_proxies(proxy_type: str):
@@ -30,7 +30,7 @@ def scrape_proxies(proxy_type: str):
     try:
         rsp = requests.get(url, headers=headers, timeout=5)
     except Exception:
-        print(colors.red + "  Something went wrong while scrapping proxies, please retry again!")
+        print(colors.red + " Something went wrong while scrapping proxies, please retry again!")
         time.sleep(3)
         quit()
 
@@ -38,8 +38,8 @@ def scrape_proxies(proxy_type: str):
     proxylist = proxylist.splitlines()
     filterr = list(dict.fromkeys(proxylist))
     proxiescount = len(proxylist)
-    print(colors.yellow + f"  Scrapid Proxies: {proxiescount}")
-    return proxylist
+    log = colors.yellow + f" [+] Scrapid Proxies: {proxiescount}"
+    return proxylist,proxiescount,log
 
 
 def requests_proxy(proxy,proxy_type):
