@@ -1,0 +1,18 @@
+Change Log
+
+v3.8
+- Added new menu
+- Added proxy scrape
+- Checker speed improved
+
+v3.5
+- Added proxyless mode
+
+v3.2
+- Added automatically create wordlists.txt and proxies.txt, on checker startup
+
+v3.1
+- Added check for updates on startup
+
+v3.0
+- 'results has no attribute' bug fixed
