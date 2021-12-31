@@ -1,18 +1,23 @@
 Change Log
 
+v3.9
+- Threads now is up to 1000 in max.
+- Added change log popup window shows up when new update available.
+- Fixed some bugs improved the checker.
+
 v3.8
-- Added new menu
-- Added proxy scrape
-- Checker speed improved
+- Added new menu.
+- Added proxy scraper from (https://proxyscrape.com/).
+- Checker speed improved.
 
 v3.5
-- Added proxyless mode
+- Added proxyless mode.
 
 v3.2
-- Added automatically create wordlists.txt and proxies.txt, on checker startup
+- Added automatically create wordlists.txt and proxies.txt, on checker startup.
 
 v3.1
-- Added check for updates on startup
+- Added check for updates on startup.
 
 v3.0
-- 'results has no attribute' bug fixed
+- 'results has no attribute' bug fixed.
