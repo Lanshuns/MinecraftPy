@@ -4,7 +4,7 @@
 This tool should only be used for educational purposes only, this tool is used to demonstrate penetration testing on how certain cyber-criminals can bruteforce certain websites. Please do not use this for illegal activity and only use it as a reference.
 
 # Download
-[Latest Release](https://github.com/Stainpy/MinecraftPy/releases/download/MinecraftPy-v3.9/MinecraftPy-v3.9.exe)
+[Latest Release](https://github.com/Stainpy/MinecraftPy/releases)
 
 # About 
 - Telegram: [@stainpy](https://t.me/stainpy)
