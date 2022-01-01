@@ -55,42 +55,48 @@ def print_logs(arg):
 
 def check_version():
     try:
-        getChangelog = requests.get("https://raw.githubusercontent.com/Stainpy/MinecraftPy/main/changelog.txt")
-        changelog = getChangelog.text
-        easygui.msgbox(msg=changelog, title='Change Log', ok_button='Close', image=None, root=None)
         getversion = requests.get("https://raw.githubusercontent.com/Stainpy/MinecraftPy/main/version.json")
         data = getversion.json()
         current_version = data['version']
-        url = data['link']
-        if version != current_version:
-            main_menu()
-            while 1:
-                inp = input(colors.yellow + f" New update available!\n Your current version is {version} and latest version is {current_version}\n [1]: Download now\n [2]: Exit\n > ")
-                if inp.isdigit():
-                    inp = int(inp)
-                    if inp == 1:
-                        link = webbrowser.open(url)
-                        time.sleep(1)
-                        exit()
-                        return link
-                    elif inp == 2:
-                        exit()
-                        break
+        if version == current_version:
+            pass
+        else:
+            getChangelog = requests.get("https://raw.githubusercontent.com/Stainpy/MinecraftPy/main/changelog.txt")
+            changelog = getChangelog.text
+            easygui.msgbox(msg=changelog, title='Change Log', ok_button='Close', image=None, root=None)
+            url = data['link']
+            if version != current_version:
+                main_menu()
+                while 1:
+                    inp = input(colors.yellow + f" New update available!\n Your current version is {version} and latest version is {current_version}\n [1]: Download now\n [2]: Exit\n > ")
+                    if inp.isdigit():
+                        inp = int(inp)
+                        if inp == 1:
+                            link = webbrowser.open(url)
+                            time.sleep(1)
+                            os.system('cls')
+                            exit()
+                            return link
+                        elif inp == 2:
+                            os.system('cls')
+                            exit()
+                            break
+                        else:
+                            print(colors.red + " Error!! Please choose one of available modes.")
+                            pass
                     else:
-                        print(colors.red + " Error!! Please choose one of available modes.")
-                        pass
-                else:
-                    print(colors.red + " Error!! Please enter a digit.")
+                        print(colors.red + " Error!! Please enter a digit.")
     except Exception as e:
         main_menu()
         print(colors.red + " Something went wrong while checking for updates!")
         time.sleep(3)
+        os.system('cls')
         exit()
 
 
 def updateTitle():
     meow = int(cpm_counter.cpm())
-    ctypes.windll.kernel32.SetConsoleTitleW(f"MinecraftPy Checker v{version} | Status: {status.wordlist}/{status.loaded_wordlist} Proxies: {status.loaded_proxy}  Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free} - By StaiN#9677")
+    ctypes.windll.kernel32.SetConsoleTitleW(f"MinecraftPy Checker v{version} | Status: {status.wordlist}/{status.loaded_wordlist} Proxies: {status.loaded_proxy} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free} - By StaiN#9677")
     pass
 
 
