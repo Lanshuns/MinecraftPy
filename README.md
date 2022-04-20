@@ -6,8 +6,7 @@ This tool should only be used for educational purposes only, this tool is used t
 # Download
 ### [Latest Release](https://github.com/Stainpy/MinecraftPy/releases)
 
-# About 
-- Telegram: [@stainpy](https://t.me/stainpy)
+# About
 - Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
 - Credits: Thanks to [Categorically](https://github.com/Categorically) for helping me in everything in this project.
 
