@@ -96,7 +96,7 @@ def check_version():
 
 def updateTitle():
     meow = int(cpm_counter.cpm())
-    ctypes.windll.kernel32.SetConsoleTitleW(f"MinecraftPy Checker v{version} | Status: {status.wordlist}/{status.loaded_wordlist} Proxies: {status.loaded_proxy} Errors/Banned: {status.errors} CPM: {meow} | Hits: {status.Hits} Unsecured: {status.Unsecured} Secured: {status.Secured} Free: {status.Free} - By StaiN#9677")
+    ctypes.windll.kernel32.SetConsoleTitleW(f"MinecraftPy Checker v{version} | [Status] {status.wordlist}/{status.loaded_wordlist} [Proxies] {status.loaded_proxy} [Errors/Banned] {status.errors} [CPM] {meow} | [Hits] {status.Hits} [Unsecured] {status.Unsecured} [Secured] {status.Secured} [Free] {status.Free} - By StaiN#9677")
     pass
 
 
@@ -109,8 +109,13 @@ def login(q,proxies,log,proxy_type):
             return False
         
         while not (goodAttempt):
+
             username = item[0]
-            password = item[1]
+            try:
+                password = item[1]
+            except:
+                password = ""
+
             def login_function(username,password,proxy,proxy_type):
                 sess = requests.session()
 
@@ -179,7 +184,7 @@ def login(q,proxies,log,proxy_type):
                     
                     if 'answer' in rsp2.text:
                         security = 'Secured'
-                        print_logs(colors.blue + f" [{security}]: {username}:{password}")
+                        print_logs(colors.blue + f" [{security}] {username}:{password}")
                         results.Secured(f"Mail/Password: {username}:{password}\nSecurity: {security}\nUsername: {mcusername}\nUUID: {uuid}\n")
                         status.Secured += 1
                         if status.Secured == 1 and results.timestamp == None:
@@ -192,7 +197,7 @@ def login(q,proxies,log,proxy_type):
 
                     elif 'answer' not in rsp2.text:
                         security = 'Unsecured'
-                        print_logs(colors.cyan + f" [{security}]: {username}:{password}")
+                        print_logs(colors.cyan + f" [{security}] {username}:{password}")
                         results.Unsecured(f"Mail/Password: {username}:{password}\nSecurity: {security}\nUsername: {mcusername}\nUUID: {uuid}\n")
                         status.Unsecured += 1
                         if status.Unsecured == 1 and results.timestamp == None:
