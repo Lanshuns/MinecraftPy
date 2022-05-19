@@ -58,7 +58,7 @@ def threads():
             num_threads = int(num_threads)
             if num_threads == 0:
                 print(colors.red + " Wrong Threads Number!! Please choose from 1 to 200.")
-            elif num_threads <= 200:
+            elif num_threads <= 1000:
                 return num_threads
             else:
                 print(colors.red + " Wrong Threads Number!! Max threads is 200.")
