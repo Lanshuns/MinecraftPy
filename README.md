@@ -3,12 +3,5 @@
 # TOS
 This tool should only be used for educational purposes only, this tool is used to demonstrate penetration testing on how certain cyber-criminals can bruteforce certain websites. Please do not use this for illegal activity and only use it as a reference.
 
-# Download
-### [Latest Release](https://github.com/Stainpy/MinecraftPy/releases)
-
-# About
-- Discord: [StaiN#9677](https://discordapp.com/users/289106753277263872)
-- Credits: Thanks to [Categorically](https://github.com/Categorically) for helping me in everything in this project.
-
 # Donate
-Bitcoin: ``3BJcvDSwqPQKRxKqMgaAL9YA1T7ZfGRt9P``
+Bitcoin: ``bc1qmmwwsn4cvpsx39sf53qsqcjyjzsqp90lus365w``
